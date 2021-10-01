@@ -1,0 +1,186 @@
+type User @model
+  @auth(
+    rules: [
+      { allow: owner }
+      { allow: groups, groups: ["Admin"] }
+      {
+        allow: public
+        operations: [read, create, update, delete]
+        provider: apiKey
+      }
+    ]
+  ) {
+  id: ID!
+  FirstName: String!
+  LastName: String!
+  Phone: String!
+  Email: String!
+  ContactNumber: String
+  StreetAddress: String
+  City: String
+  State: String
+  ProfileImage: String
+}
+type Product
+  @model
+  @auth(
+    rules: [
+      # allow admins to create, update and delete books
+      { allow: groups, groups: ["Admin"] }
+      # allow all authenticated users to view books
+      { allow: private, operations: [read] }
+      # allow all guest users (not authenticated) to view books
+      { allow: public, operations: [read], provider: apiKey}
+    ]
+  ) {
+  id: ID!
+  Title: String!
+  Description: String
+  Image: String
+  Price: Float
+}
+type Order
+  @model
+  @auth(
+    rules: [
+      # only owner can see his orders
+      { allow: owner, identityClaim: "email", ownerField: "customer" }
+      # allow admins to view orders
+      { allow: groups, groups: ["Admin"] }
+    ]
+  ) {
+  id: ID!
+  UserID: ID!
+  Date: String
+  Total: Float
+  Products: [Product] @connection(fields: ["id"])
+  User: User @connection(fields: ["UserID"])
+}
+input CartItem {
+  id: ID!
+  title: String
+  image: String
+  price: Float
+  amount: Int
+}
+input ProcessOrderInput {
+  id: ID!
+  cart: [CartItem]
+  total: Float!
+  address: String
+}
+enum OrderStatus {
+  SUCCESS
+  FAILED
+}
+type Mutation {
+  processOrder(input: ProcessOrderInput!): OrderStatus
+  @function(name: "createOrder-${env}")
+}
+
+#********************   BACKUP ***********************#
+# type User @model
+#   @auth(
+#     rules: [
+#       { allow: owner }
+#       { allow: groups, groups: ["Admin"] }
+#       {
+#         allow: public
+#         operations: [read, create, update, delete]
+#         provider: apiKey
+#       }
+#     ]
+#   ) {
+#   id: ID!
+#   FirstName: String!
+#   LastName: String!
+#   Email: String!
+#   ContactNumber: String
+#   StreetAddress: String
+#   City: String
+#   State: String
+#   ProfileImage: String
+# }
+
+# type Product
+#   @model
+#   @auth(
+#     rules: [
+#       # allow admins to create, update and delete books
+#       { allow: groups, groups: ["Admin"] }
+#       # allow all authenticated users to view books
+#       { allow: private, operations: [read] }
+#       # allow all guest users (not authenticated) to view books
+#       { allow: public, operations: [read], provider: apiKey}
+#     ]
+#   ) {
+#   id: ID!
+#   title: String!
+#   description: String
+#   image: String
+#   price: Float
+#   orders: [ProductOrder] @connection(keyName: "byOrder", fields: ["id"])
+# }
+
+# type ProductOrder
+#   @model
+#   @key(name: "byProduct", fields: ["ProductID", "OrderID"])
+#   @key(name: "byOrder", fields: ["OrderID", "ProductID"])
+#   @auth(
+#     rules: [
+#       # allow admins to create bookorders for customers by using customer email in lambda
+#       { allow: owner, identityClaim: "email", ownerField: "customer" }
+#       { allow: groups, groups: ["Admin"] }
+#     ]
+#   ) {
+#   id: ID!
+#   ProductID: ID!
+#   OrderID: ID!
+#   Product: Product @connection(fields: ["ProductID"])
+#   order: Order @connection(fields: ["OrderID"])
+# }
+
+# type Order
+#   @model
+#   @auth(
+#     rules: [
+#       # only owner can see his orders
+#       { allow: owner, identityClaim: "email", ownerField: "customer" }
+#       # allow admins to view orders
+#       { allow: groups, groups: ["Admin"] }
+#     ]
+#   )
+#   @key(name: "byUser", fields: ["user"]) {
+#   id: ID!
+#   user: String!
+#   date: String
+#   total: Float
+#   Products: [ProductOrder] @connection(keyName: "byOrder", fields: ["id"])
+# }
+
+# enum OrderStatus {
+#   SUCCESS
+#   FAILED
+# }
+
+# input CartItem {
+#   id: ID!
+#   title: String
+#   image: String
+#   price: Float
+#   amount: Int
+# }
+
+# input ProcessOrderInput {
+#   id: ID!
+#   cart: [CartItem]
+#   total: Float!
+#   token: String!
+#   address: String
+# }
+
+# type Mutation {
+#   processOrder(input: ProcessOrderInput!): OrderStatus
+#     @function(name: "createOrder-${env}")
+# }
+
