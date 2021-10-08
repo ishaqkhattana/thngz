@@ -4,6 +4,7 @@ exports.handler = async (event) => {
     // TODO implement
     const response = {
         statusCode: 200,
+        //ahhaha
     //  Uncomment below to enable CORS requests
     //  headers: {
     //      "Access-Control-Allow-Origin": "*",

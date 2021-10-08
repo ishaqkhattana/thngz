@@ -18,7 +18,7 @@
       "function": {
         "CreateOrderFunc": {
           "deploymentBucketName": "amplify-thngz-dev-40957-deployment",
-          "s3Key": "amplify-builds/CreateOrderFunc-79692f312b6b44346539-build.zip"
+          "s3Key": "amplify-builds/CreateOrderFunc-3564304436624a62416a-build.zip"
         }
       }
     }

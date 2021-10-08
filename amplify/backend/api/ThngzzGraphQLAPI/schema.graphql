@@ -23,6 +23,7 @@ type User @model
 }
 type Product
   @model
+  @searchable
   @auth(
     rules: [
       # allow admins to create, update and delete books
@@ -30,7 +31,7 @@ type Product
       # allow all authenticated users to view books
       { allow: private, operations: [read] }
       # allow all guest users (not authenticated) to view books
-      { allow: public, operations: [read], provider: apiKey}
+      { allow: public, operations: [read, create, update, delete], provider: apiKey}
     ]
   ) {
   id: ID!
@@ -38,6 +39,7 @@ type Product
   Description: String
   Image: String
   Price: Float
+  Quantity: Int
 }
 type Order
   @model
@@ -47,6 +49,7 @@ type Order
       { allow: owner, identityClaim: "email", ownerField: "customer" }
       # allow admins to view orders
       { allow: groups, groups: ["Admin"] }
+      { allow: public, operations: [read, create, update, delete], provider: apiKey}
     ]
   ) {
   id: ID!

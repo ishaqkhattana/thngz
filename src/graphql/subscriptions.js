@@ -1,126 +1,6 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateOrder = /* GraphQL */ `
-  subscription OnCreateOrder($customer: String) {
-    onCreateOrder(customer: $customer) {
-      id
-      UserID
-      Date
-      Total
-      createdAt
-      updatedAt
-      User {
-        id
-        FirstName
-        LastName
-        Phone
-        Email
-        ContactNumber
-        StreetAddress
-        City
-        State
-        ProfileImage
-        createdAt
-        updatedAt
-        owner
-      }
-      Products {
-        items {
-          id
-          Title
-          Description
-          Image
-          Price
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      customer
-    }
-  }
-`;
-export const onUpdateOrder = /* GraphQL */ `
-  subscription OnUpdateOrder($customer: String) {
-    onUpdateOrder(customer: $customer) {
-      id
-      UserID
-      Date
-      Total
-      createdAt
-      updatedAt
-      User {
-        id
-        FirstName
-        LastName
-        Phone
-        Email
-        ContactNumber
-        StreetAddress
-        City
-        State
-        ProfileImage
-        createdAt
-        updatedAt
-        owner
-      }
-      Products {
-        items {
-          id
-          Title
-          Description
-          Image
-          Price
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      customer
-    }
-  }
-`;
-export const onDeleteOrder = /* GraphQL */ `
-  subscription OnDeleteOrder($customer: String) {
-    onDeleteOrder(customer: $customer) {
-      id
-      UserID
-      Date
-      Total
-      createdAt
-      updatedAt
-      User {
-        id
-        FirstName
-        LastName
-        Phone
-        Email
-        ContactNumber
-        StreetAddress
-        City
-        State
-        ProfileImage
-        createdAt
-        updatedAt
-        owner
-      }
-      Products {
-        items {
-          id
-          Title
-          Description
-          Image
-          Price
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      customer
-    }
-  }
-`;
 export const onCreateUser = /* GraphQL */ `
   subscription OnCreateUser($owner: String) {
     onCreateUser(owner: $owner) {
@@ -186,6 +66,7 @@ export const onCreateProduct = /* GraphQL */ `
       Description
       Image
       Price
+      Quantity
       createdAt
       updatedAt
     }
@@ -199,6 +80,7 @@ export const onUpdateProduct = /* GraphQL */ `
       Description
       Image
       Price
+      Quantity
       createdAt
       updatedAt
     }
@@ -212,8 +94,132 @@ export const onDeleteProduct = /* GraphQL */ `
       Description
       Image
       Price
+      Quantity
       createdAt
       updatedAt
+    }
+  }
+`;
+export const onCreateOrder = /* GraphQL */ `
+  subscription OnCreateOrder($customer: String) {
+    onCreateOrder(customer: $customer) {
+      id
+      UserID
+      Date
+      Total
+      createdAt
+      updatedAt
+      User {
+        id
+        FirstName
+        LastName
+        Phone
+        Email
+        ContactNumber
+        StreetAddress
+        City
+        State
+        ProfileImage
+        createdAt
+        updatedAt
+        owner
+      }
+      Products {
+        items {
+          id
+          Title
+          Description
+          Image
+          Price
+          Quantity
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      customer
+    }
+  }
+`;
+export const onUpdateOrder = /* GraphQL */ `
+  subscription OnUpdateOrder($customer: String) {
+    onUpdateOrder(customer: $customer) {
+      id
+      UserID
+      Date
+      Total
+      createdAt
+      updatedAt
+      User {
+        id
+        FirstName
+        LastName
+        Phone
+        Email
+        ContactNumber
+        StreetAddress
+        City
+        State
+        ProfileImage
+        createdAt
+        updatedAt
+        owner
+      }
+      Products {
+        items {
+          id
+          Title
+          Description
+          Image
+          Price
+          Quantity
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      customer
+    }
+  }
+`;
+export const onDeleteOrder = /* GraphQL */ `
+  subscription OnDeleteOrder($customer: String) {
+    onDeleteOrder(customer: $customer) {
+      id
+      UserID
+      Date
+      Total
+      createdAt
+      updatedAt
+      User {
+        id
+        FirstName
+        LastName
+        Phone
+        Email
+        ContactNumber
+        StreetAddress
+        City
+        State
+        ProfileImage
+        createdAt
+        updatedAt
+        owner
+      }
+      Products {
+        items {
+          id
+          Title
+          Description
+          Image
+          Price
+          Quantity
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      customer
     }
   }
 `;
