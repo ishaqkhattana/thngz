@@ -38,10 +38,10 @@ const Cart = () => {
         Shopping Cart
       </h2>
       <div className="grid grid-cols-1 lg:grid-cols-2">
-        <div className="mt-14 mx-2 lg:mx-14 bg-white py-4 border-white rounded-lg">
+        <div className="mt-4 lg:mt-14 mx-2 lg:mx-14 bg-white py-4 border-white rounded-lg">
           <div className="grid grid-cols-3 m-5 bg-gray-100 p-4 border-white rounded-lg">
-            <p className="text-base lg:text-3xl">Product</p>
-            <p className="text-base lg:text-3xl grid justify-items-center">Price</p>
+            <p className="text-base font-bold lg:text-3xl">Product</p>
+            <p className="text-base font-bold lg:text-3xl grid justify-items-center">Price</p>
             <div></div>
           </div>
           {cart.userCart.map((item) => {
@@ -53,11 +53,11 @@ const Cart = () => {
                     // style={{ maxWidth: "12rem" }}
                     className="border-white rounded-lg mb-2 w-full"
                   />
-                  <p className="text-base lg:text-2xl mr-auto ml-auto items-center mt-auto mb-auto">
+                  <p className="text-lg  lg:text-2xl mr-auto ml-auto items-center mt-auto mb-auto">
                     {item.Title}
                   </p>
                 </div>
-                <p className="text-base lg:text-2xl mr-auto ml-auto items-center mt-auto mb-auto">
+                <p className="text-base lg:text-2xl mr-auto ml-auto items-center mt-auto mb-auto text-blue-500">
                   Rs {item.Price}
                   
                 </p>
@@ -85,7 +85,7 @@ const Cart = () => {
           })}
           <hr className="w-3/4 mr-auto ml-auto text-bold" />
         </div>
-        <div className="mt-14 mx-2 lg:mr-14 bg-white py-4 border-white rounded-lg mb-4">
+        <div className="mt-4 lg:mt-14 mx-2 lg:mr-14 bg-white py-4 border-white rounded-lg mb-4">
             <h2 className=" text-3xl ml-4 mt-auto mb-auto mt-4">
               Order Summary
             </h2>

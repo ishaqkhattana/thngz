@@ -73,7 +73,7 @@ const ProductPage = () => {
       <h2 className=" text-4xl grid justify-items-center mt-10">
         Product Details
       </h2>
-      <div className="mt-14 mx-14 bg-white py-4 border-white rounded-lg">
+      <div className="mt-14 mx-2 lg:mx-14 bg-white py-4 border-white rounded-lg mb-2">
         <div className="grid-cols-1 grid lg:grid-cols-2 p-8">
           <div className="border-white rounded-lg">
             <img

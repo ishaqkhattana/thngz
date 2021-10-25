@@ -1,10 +1,15 @@
-import React, { Fragment } from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 import { useHistory } from "react-router";
 
 const Nav = ({ navigation }) => {
+  const [cartItemsNumber, setCartItemsNumber] = useState(0);
+
   const history = useHistory();
+  const cart = useSelector((state) => state.cart);
+
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
   }
@@ -12,6 +17,17 @@ const Nav = ({ navigation }) => {
   const handleCartClick = () => {
     history.push("/cart");
   };
+
+  let numOfItemsInCart = 0;
+
+  useEffect(() => {
+    console.log("in use effect");
+    let counter = 0;
+    cart.userCart.forEach((item) => {
+      counter++;
+    });
+    setCartItemsNumber(counter);
+  }, [cart]);
   return (
     <Disclosure as="nav" className="bg-black">
       {({ open }) => (
@@ -31,7 +47,7 @@ const Nav = ({ navigation }) => {
               </div>
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex-shrink-0 flex items-center">
-                  <a href= "/">
+                  <a href="/">
                     <img
                       className="block lg:hidden h-20 w-20"
                       src="./logo.png"
@@ -64,33 +80,38 @@ const Nav = ({ navigation }) => {
                   </div>
                 </div>
               </div>
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+              <div className="inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <button
                   type="button"
                   onClick={() => {
                     handleCartClick();
                   }}
-                  className="bg-black p-1 rounded-full text-white hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                  className=" bg-black p-1 rounded-full text-white hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                 >
-                  <span className="sr-only ">View notifications</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                    />
-                  </svg>
+                  <span className="sr-only">View notifications</span>
+                  <div className="relative overflow-hidden">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-11 w-8 object-cover"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                      />
+                    </svg>
+                    {cartItemsNumber > 0 ? (
+                      <div className="w-2 h-2 bg-red-500 rounded-full align flex items-center absolute bottom-0 inset-x-6 mb-9 bg-red-500 text-white text-xs text-center leading-4"></div>
+                    ) : null}
+                  </div>
                 </button>
 
                 {/* Profile dropdown */}
-                <Menu as="div" className="ml-3 relative">
+                {/* <Menu as="div" className="ml-3 relative">
                   <div>
                     <Menu.Button className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                       <span className="sr-only">Open user menu</span>
@@ -152,7 +173,7 @@ const Nav = ({ navigation }) => {
                       </Menu.Item>
                     </Menu.Items>
                   </Transition>
-                </Menu>
+                </Menu> */}
               </div>
             </div>
           </div>

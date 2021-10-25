@@ -39,9 +39,18 @@ const Products = () => {
         setSearch(result.data.searchProducts.items);
       }
     }
-
-    console.log(search);
   };
+
+  const handleSearchCancel = (e) => {
+    e.preventDefault()
+    var searchbar = document.getElementById("search")
+    searchbar.value = ""
+    setSearch("")
+  }
+  const handleSearchItemClick = (item) => {
+    dispatch(addProduct(item))
+    history.push('/product')
+  }
 
   const handleAddToCart = (product) => {
     if (cart.userCart.length == 0) {
@@ -132,19 +141,20 @@ const Products = () => {
               onChange={(e) => handleSearchChange(e)}
             />
             <div className="p-4">
-              <button className="bg-black text-white rounded-full p-2 hover:bg-blue-400 focus:outline-none w-12 h-12 flex items-center justify-center">
+              <button className="bg-black text-white rounded-full p-2 hover:bg-blue-400 focus:outline-none w-12 h-12 flex items-center justify-center"
+              onClick = {(e) => {handleSearchCancel(e)}}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
+                  class="h-6 w-6"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                 >
                   <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M6 18L18 6M6 6l12 12"
                   />
                 </svg>
               </button>
@@ -156,27 +166,28 @@ const Products = () => {
         <div className=" box-content w-full grid ml-auto mr-auto mt-2 lg:w-1/2">
           {search && search.length != 0
             ? search.map((item) => (
-                <div className="mx-4 lg:grid grid-cols-1 justify-items-center mt-2 ">
-                  <div className="flex items-center justify-items-center border-black shadow-lg rounded-full bg-black text-white w-full transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:transform-none ease-in">
-                    <img
-                      className="border-black rounded-full ml-2 py-2"
-                      src={item.Image}
-                      style={{ maxWidth: "6rem" }}
-                    />
-                    <a
-                      href=""
-                      className="ml-8 w-100 justify-items-center grid text-xl "
-                    >
+                <div className="mx-4 grid grid-cols-1 justify-items-center mt-2 ">
+                  <a
+                    onClick = {(e) => {handleSearchItemClick(item)}}
+                    className="w-full justify-items-center grid text-xl cursor-pointer"
+                  >
+                    <div className="flex items-center justify-items-center border-black shadow-lg rounded-full bg-black text-white w-full transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:transform-none ease-in">
+                      <img
+                        className="border-black rounded-full ml-4 py-2 mr-4"
+                        src={item.Image}
+                        style={{ maxWidth: "6rem" }}
+                      />
+
                       {item.Title}
-                    </a>
-                  </div>
+                    </div>
+                  </a>
                 </div>
               ))
             : null}
         </div>
       </div>
 
-      <div className="mt-10 mx-14 bg-white py-4 border-white rounded-lg">
+      <div className="mt-10 mx-2 lg:mx-14 bg-white py-4 border-white rounded-lg">
         {/* Products  */}
         <div className="grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 px-8 gap-8 mt-8 z-0 justify-items-center ">
           {products.map((product) => (
@@ -188,7 +199,9 @@ const Products = () => {
                 }}
               >
                 <img className="border rounded-lg" src={product.Image} />
-                <p className="font-medium text-lg lg:text-2xl mt-4">{product.Title}</p>
+                <p className="font-medium text-lg lg:text-2xl mt-4">
+                  {product.Title}
+                </p>
                 <p className="font-medium text-lg lg:text-2xl text-blue-500">
                   Rs {product.Price}\-
                 </p>
@@ -199,7 +212,7 @@ const Products = () => {
                   Condition: {product.Condition}/10
                 </p>
                 {product.Quantity >= 1 ? (
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:w-full">
                     <button
                       className="mt-2 border rounded-lg p-2 text-black transition duration-500 ease-in-out hover:bg-blue-500 transform hover:-translate-y-1 hover:scale-110"
                       onClick={(e) => {
@@ -235,8 +248,8 @@ const Products = () => {
                     </button>
                   </div>
                 ) : (
-                  <div className = "grid grid-cols-1 justify-items-center">
-                    <p className = "mt-4 text-lg lg:text-2xl">Out of Stock :(</p>
+                  <div className="grid grid-cols-1 justify-items-center">
+                    <p className="mt-4 text-lg lg:text-2xl">Out of Stock :(</p>
                   </div>
                 )}
               </a>
