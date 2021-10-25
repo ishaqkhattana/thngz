@@ -1,26 +1,32 @@
 {
-  "dev": {
-    "awscloudformation": {
-      "AuthRoleName": "amplify-thngz-dev-40957-authRole",
-      "UnauthRoleArn": "arn:aws:iam::496292441641:role/amplify-thngz-dev-40957-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::496292441641:role/amplify-thngz-dev-40957-authRole",
-      "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-thngz-dev-40957-deployment",
-      "UnauthRoleName": "amplify-thngz-dev-40957-unauthRole",
-      "StackName": "amplify-thngz-dev-40957",
-      "StackId": "arn:aws:cloudformation:us-east-1:496292441641:stack/amplify-thngz-dev-40957/8ae68880-2243-11ec-88a1-12645090582f",
-      "AmplifyAppId": "d2vboyhh9g6gft"
-    },
-    "categories": {
-      "auth": {
-        "thngzeb812603": {}
-      },
-      "function": {
-        "CreateOrderFunc": {
-          "deploymentBucketName": "amplify-thngz-dev-40957-deployment",
-          "s3Key": "amplify-builds/CreateOrderFunc-3564304436624a62416a-build.zip"
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-thngz-dev-40957-authRole",
+            "UnauthRoleArn": "arn:aws:iam::496292441641:role/amplify-thngz-dev-40957-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::496292441641:role/amplify-thngz-dev-40957-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "amplify-thngz-dev-40957-deployment",
+            "UnauthRoleName": "amplify-thngz-dev-40957-unauthRole",
+            "StackName": "amplify-thngz-dev-40957",
+            "StackId": "arn:aws:cloudformation:us-east-1:496292441641:stack/amplify-thngz-dev-40957/8ae68880-2243-11ec-88a1-12645090582f",
+            "AmplifyAppId": "d2vboyhh9g6gft"
+        },
+        "categories": {
+            "auth": {
+                "thngzeb812603": {}
+            },
+            "function": {
+                "CreateOrderFunc": {
+                    "deploymentBucketName": "amplify-thngz-dev-40957-deployment",
+                    "s3Key": "amplify-builds/CreateOrderFunc-3564304436624a62416a-build.zip"
+                }
+            },
+            "hosting": {
+                "amplifyhosting": {
+                    "appId": "d2vboyhh9g6gft",
+                    "type": "manual"
+                }
+            }
         }
-      }
     }
-  }
 }

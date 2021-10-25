@@ -178,7 +178,7 @@ const Products = () => {
 
       <div className="mt-10 mx-14 bg-white py-4 border-white rounded-lg">
         {/* Products  */}
-        <div className="grid 2xl:grid-cols-4 sm:grid-cols-2 px-8 gap-8 mt-8 z-0 justify-items-center ">
+        <div className="grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 px-8 gap-8 mt-8 z-0 justify-items-center ">
           {products.map((product) => (
             <div className="w-full border border-gray-50 border-opacity-80 rounded-lg p-4 shadow-lg transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:transform-none cursor-pointer">
               <a
