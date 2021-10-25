@@ -34,6 +34,9 @@ export const updateProduct = /* GraphQL */ `
       Description
       Image
       Price
+      Quantity
+      Size
+      Condition
       createdAt
       updatedAt
     }
@@ -63,7 +66,12 @@ export const createOrder = /* GraphQL */ `
     createOrder(input: $input, condition: $condition) {
       id
       UserID
-      Date
+      Cart
+      Address
+      Name
+      PaymentOption
+      Phone
+      Email
       Total
       createdAt
       updatedAt
@@ -82,22 +90,12 @@ export const createOrder = /* GraphQL */ `
         updatedAt
         owner
       }
-      Products {
-        items {
-          id
-          Title
-          Description
-          Image
-          Price
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
       customer
     }
   }
 `;
+
+
 export const updateOrder = /* GraphQL */ `
   mutation UpdateOrder(
     $input: UpdateOrderInput!

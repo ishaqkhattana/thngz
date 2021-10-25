@@ -1,17 +1,17 @@
 import React, { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
+import { useHistory } from "react-router";
 
-const Nav = () => {
+const Nav = ({ navigation }) => {
+  const history = useHistory();
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
   }
 
-  const navigation = [
-    { name: "Dashboard", href: "#", current: true },
-    { name: "About Us", href: "#", current: false },
-    { name: "Contact Us", href: "#", current: false },
-  ];
+  const handleCartClick = () => {
+    history.push("/cart");
+  };
   return (
     <Disclosure as="nav" className="bg-black">
       {({ open }) => (
@@ -31,28 +31,30 @@ const Nav = () => {
               </div>
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex-shrink-0 flex items-center">
-                  <img
-                    className="block lg:hidden h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
-                    alt="Workflow"
-                  />
-                  <img
-                    className="hidden lg:block h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
-                    alt="Workflow"
-                  />
+                  <a href= "/">
+                    <img
+                      className="block lg:hidden h-20 w-20"
+                      src="./logo.png"
+                      alt="Workflow"
+                    />
+                    <img
+                      className="hidden lg:block h-20 w-20 "
+                      src="./logo.png"
+                      alt="Workflow"
+                    />
+                  </a>
                 </div>
                 <div className="hidden sm:block sm:ml-6">
-                  <div className="flex space-x-4">
+                  <div className="flex space-x-4 ">
                     {navigation.map((item) => (
                       <a
                         key={item.name}
                         href={item.href}
                         className={classNames(
                           item.current
-                            ? "bg-gray-900 text-white"
+                            ? "bg-white text-black"
                             : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                          "px-3 py-2 rounded-md text-sm font-medium"
+                          "px-3 py-2 rounded-md text-sm font-medium mt-6"
                         )}
                         aria-current={item.current ? "page" : undefined}
                       >
@@ -65,9 +67,12 @@ const Nav = () => {
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <button
                   type="button"
-                  className="bg-black p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                  onClick={() => {
+                    handleCartClick();
+                  }}
+                  className="bg-black p-1 rounded-full text-white hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                 >
-                  <span className="sr-only">View notifications</span>
+                  <span className="sr-only ">View notifications</span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-6 w-6"

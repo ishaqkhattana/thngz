@@ -55,6 +55,8 @@ export const getProduct = /* GraphQL */ `
       Image
       Price
       Quantity
+      Size
+      Condition
       createdAt
       updatedAt
     }
@@ -74,6 +76,8 @@ export const listProducts = /* GraphQL */ `
         Image
         Price
         Quantity
+        Size
+        Condition
         createdAt
         updatedAt
       }
@@ -103,6 +107,8 @@ export const searchProducts = /* GraphQL */ `
         Image
         Price
         Quantity
+        Size
+        Condition
         createdAt
         updatedAt
       }
@@ -116,7 +122,12 @@ export const getOrder = /* GraphQL */ `
     getOrder(id: $id) {
       id
       UserID
-      Date
+      Cart
+      Address
+      Name
+      PaymentOption
+      Phone
+      Email
       Total
       createdAt
       updatedAt
@@ -135,19 +146,6 @@ export const getOrder = /* GraphQL */ `
         updatedAt
         owner
       }
-      Products {
-        items {
-          id
-          Title
-          Description
-          Image
-          Price
-          Quantity
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
       customer
     }
   }
@@ -162,7 +160,12 @@ export const listOrders = /* GraphQL */ `
       items {
         id
         UserID
-        Date
+        Cart
+        Address
+        Name
+        PaymentOption
+        Phone
+        Email
         Total
         createdAt
         updatedAt
@@ -180,9 +183,6 @@ export const listOrders = /* GraphQL */ `
           createdAt
           updatedAt
           owner
-        }
-        Products {
-          nextToken
         }
         customer
       }

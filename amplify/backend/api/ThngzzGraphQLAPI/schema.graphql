@@ -40,6 +40,8 @@ type Product
   Image: String
   Price: Float
   Quantity: Int
+  Size: Float
+  Condition: Float
 }
 type Order
   @model
@@ -53,10 +55,14 @@ type Order
     ]
   ) {
   id: ID!
-  UserID: ID!
-  Date: String
+  UserID: ID
+  Cart: String!
+  Address: String!
+  Name: String
+  PaymentOption : PaymentOptions
+  Phone: String!
+  Email: String!
   Total: Float
-  Products: [Product] @connection(fields: ["id"])
   User: User @connection(fields: ["UserID"])
 }
 input CartItem {
@@ -68,13 +74,17 @@ input CartItem {
 }
 input ProcessOrderInput {
   id: ID!
-  cart: [CartItem]
+  cart: [AWSJSON]
   total: Float!
   address: String
 }
 enum OrderStatus {
   SUCCESS
   FAILED
+}
+enum PaymentOptions {
+  COD 
+  BANKTRANSFER
 }
 type Mutation {
   processOrder(input: ProcessOrderInput!): OrderStatus

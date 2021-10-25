@@ -18,21 +18,22 @@ const Admin = () => {
     Description: "",
     Image: "",
     Price: "",
-    Quantity: 0
+    Quantity: 0,
+    Condition: 0,
+    Size: 0
   });
 
   const handleSubmit = async (e) => {
       e.preventDefault();
       try {
           if (!productDetails.Title || !productDetails.Price) return
-          // await API.graphql(graphqlOperation(createProduct, { input: productDetails }))
           const result = await API.graphql({
             query: createProduct,
             variables: {input: productDetails},
             authMode: 'API_KEY'
           })
           console.log("hahah",result)
-          setProductDetails({ Title: "", Description: "", Image: "", Price: "", Quantity: "" })
+          setProductDetails({ Title: "", Description: "", Image: "", Price: "", Quantity: "", Size: "", Condition: "" })
       } catch (err) {
           console.log('error creating product:', err)
       }
@@ -62,11 +63,11 @@ const Admin = () => {
 
   return (
     <section className="admin-wrapper">
-      {/* <AmplifyAuthenticator> */}
+      <AmplifyAuthenticator>
       <section>
         <header className="form-header">
-          <h3>Add New Book</h3>
-          {/* <AmplifySignOut></AmplifySignOut> */}
+          <h3>Add New Product</h3>
+          <AmplifySignOut></AmplifySignOut>
         </header>
         <form className="form-wrapper" onSubmit={handleSubmit}>
         {/* <form className="form-wrapper"> */}
@@ -99,6 +100,42 @@ const Admin = () => {
                 />
               </p>
             </div>
+            <div className="title-form">
+              <p>
+                <label htmlFor="size">Size</label>
+              </p>
+              <p>
+                <input
+                  name="size"
+                  type="text"
+                  placeholder="Type the Size"
+                  onChange={(e) =>{
+                    setProductDetails({ ...productDetails, Size: e.target.value })
+                    console.log(productDetails)
+                  }
+                  }
+                  required
+                />
+              </p>
+            </div>
+            <div className="title-form">
+              <p>
+                <label htmlFor="condition">Condition</label>
+              </p>
+              <p>
+                <input
+                  name="condition"
+                  type="text"
+                  placeholder="Type the Condition"
+                  onChange={(e) =>{
+                    setProductDetails({ ...productDetails, Condition: e.target.value })
+                    console.log(productDetails)
+                  }
+                  }
+                  required
+                />
+              </p>
+            </div>
             <div className="description-form">
               <p>
                 <label htmlFor="description">Description</label>
@@ -108,7 +145,7 @@ const Admin = () => {
                   name="description"
                   type="text"
                   rows="8"
-                  placeholder="Type the description of the book"
+                  placeholder="Type the description of the product"
                   onChange={(e) =>
                     setProductDetails({
                       ...productDetails,
@@ -125,7 +162,7 @@ const Admin = () => {
                 <input
                   name="price"
                   type="text"
-                  placeholder="What is the Price of the book (Rs)"
+                  placeholder="What is the Price of the product(Rs)"
                   onChange={(e) =>
                     setProductDetails({ ...productDetails, Price: e.target.value })
                   }
@@ -155,7 +192,7 @@ const Admin = () => {
           </div>
         </form>
       </section>
-      {/* </AmplifyAuthenticator> */}
+      </AmplifyAuthenticator>
     </section>
   );
 };

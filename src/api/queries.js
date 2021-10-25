@@ -150,6 +150,9 @@ export const listProducts = /* GraphQL */ `
         Description
         Image
         Price
+        Quantity
+        Size
+        Condition
         createdAt
         updatedAt
       }

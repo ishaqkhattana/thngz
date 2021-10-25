@@ -84,6 +84,8 @@ export const createProduct = /* GraphQL */ `
       Image
       Price
       Quantity
+      Size
+      Condition
       createdAt
       updatedAt
     }
@@ -101,6 +103,8 @@ export const updateProduct = /* GraphQL */ `
       Image
       Price
       Quantity
+      Size
+      Condition
       createdAt
       updatedAt
     }
@@ -118,6 +122,8 @@ export const deleteProduct = /* GraphQL */ `
       Image
       Price
       Quantity
+      Size
+      Condition
       createdAt
       updatedAt
     }
@@ -131,7 +137,12 @@ export const createOrder = /* GraphQL */ `
     createOrder(input: $input, condition: $condition) {
       id
       UserID
-      Date
+      Cart
+      Address
+      Name
+      PaymentOption
+      Phone
+      Email
       Total
       createdAt
       updatedAt
@@ -149,19 +160,6 @@ export const createOrder = /* GraphQL */ `
         createdAt
         updatedAt
         owner
-      }
-      Products {
-        items {
-          id
-          Title
-          Description
-          Image
-          Price
-          Quantity
-          createdAt
-          updatedAt
-        }
-        nextToken
       }
       customer
     }
@@ -175,7 +173,12 @@ export const updateOrder = /* GraphQL */ `
     updateOrder(input: $input, condition: $condition) {
       id
       UserID
-      Date
+      Cart
+      Address
+      Name
+      PaymentOption
+      Phone
+      Email
       Total
       createdAt
       updatedAt
@@ -193,19 +196,6 @@ export const updateOrder = /* GraphQL */ `
         createdAt
         updatedAt
         owner
-      }
-      Products {
-        items {
-          id
-          Title
-          Description
-          Image
-          Price
-          Quantity
-          createdAt
-          updatedAt
-        }
-        nextToken
       }
       customer
     }
@@ -219,7 +209,12 @@ export const deleteOrder = /* GraphQL */ `
     deleteOrder(input: $input, condition: $condition) {
       id
       UserID
-      Date
+      Cart
+      Address
+      Name
+      PaymentOption
+      Phone
+      Email
       Total
       createdAt
       updatedAt
@@ -237,19 +232,6 @@ export const deleteOrder = /* GraphQL */ `
         createdAt
         updatedAt
         owner
-      }
-      Products {
-        items {
-          id
-          Title
-          Description
-          Image
-          Price
-          Quantity
-          createdAt
-          updatedAt
-        }
-        nextToken
       }
       customer
     }
