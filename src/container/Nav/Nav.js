@@ -45,7 +45,7 @@ const Nav = ({ navigation }) => {
                   )}
                 </Disclosure.Button>
               </div>
-              <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+              <div className="flex-1 flex items-center ml-10 justify-center sm:items-stretch sm:justify-start">
                 <div className="flex-shrink-0 flex items-center">
                   <a href="/">
                     <img
@@ -69,7 +69,7 @@ const Nav = ({ navigation }) => {
                         className={classNames(
                           item.current
                             ? "bg-white text-black"
-                            : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                            : "text-black bg-white hover:bg-gray-200",
                           "px-3 py-2 rounded-md text-sm font-medium mt-6"
                         )}
                         aria-current={item.current ? "page" : undefined}
@@ -186,8 +186,8 @@ const Nav = ({ navigation }) => {
                   href={item.href}
                   className={classNames(
                     item.current
-                      ? "bg-gray-900 text-white"
-                      : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                      ? "bg-white text-black"
+                      : "text-black bg-white ",
                     "block px-3 py-2 rounded-md text-base font-medium"
                   )}
                   aria-current={item.current ? "page" : undefined}

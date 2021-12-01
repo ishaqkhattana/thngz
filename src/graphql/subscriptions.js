@@ -65,6 +65,7 @@ export const onCreateProduct = /* GraphQL */ `
       Title
       Description
       Image
+      Images
       Price
       Quantity
       Size
@@ -81,6 +82,7 @@ export const onUpdateProduct = /* GraphQL */ `
       Title
       Description
       Image
+      Images
       Price
       Quantity
       Size
@@ -97,6 +99,7 @@ export const onDeleteProduct = /* GraphQL */ `
       Title
       Description
       Image
+      Images
       Price
       Quantity
       Size

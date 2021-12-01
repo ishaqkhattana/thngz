@@ -1107,6 +1107,17 @@
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
+          "name" : "Images",
+          "description" : null,
+          "args" : [ ],
+          "type" : {
+            "kind" : "SCALAR",
+            "name" : "String",
+            "ofType" : null
+          },
+          "isDeprecated" : false,
+          "deprecationReason" : null
+        }, {
           "name" : "Price",
           "description" : null,
           "args" : [ ],
@@ -1263,6 +1274,15 @@
           "defaultValue" : null
         }, {
           "name" : "Image",
+          "description" : null,
+          "type" : {
+            "kind" : "INPUT_OBJECT",
+            "name" : "ModelStringInput",
+            "ofType" : null
+          },
+          "defaultValue" : null
+        }, {
+          "name" : "Images",
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
@@ -1613,6 +1633,15 @@
           "defaultValue" : null
         }, {
           "name" : "Image",
+          "description" : null,
+          "type" : {
+            "kind" : "INPUT_OBJECT",
+            "name" : "SearchableStringFilterInput",
+            "ofType" : null
+          },
+          "defaultValue" : null
+        }, {
+          "name" : "Images",
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
@@ -2180,6 +2209,11 @@
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
+          "name" : "Images",
+          "description" : null,
+          "isDeprecated" : false,
+          "deprecationReason" : null
+        }, {
           "name" : "Price",
           "description" : null,
           "isDeprecated" : false,
@@ -2296,8 +2330,8 @@
           "description" : null,
           "args" : [ ],
           "type" : {
-            "kind" : "ENUM",
-            "name" : "PaymentOptions",
+            "kind" : "SCALAR",
+            "name" : "String",
             "ofType" : null
           },
           "isDeprecated" : false,
@@ -2401,25 +2435,6 @@
         "enumValues" : null,
         "possibleTypes" : null
       }, {
-        "kind" : "ENUM",
-        "name" : "PaymentOptions",
-        "description" : null,
-        "fields" : null,
-        "inputFields" : null,
-        "interfaces" : null,
-        "enumValues" : [ {
-          "name" : "COD",
-          "description" : null,
-          "isDeprecated" : false,
-          "deprecationReason" : null
-        }, {
-          "name" : "BANKTRANSFER",
-          "description" : null,
-          "isDeprecated" : false,
-          "deprecationReason" : null
-        } ],
-        "possibleTypes" : null
-      }, {
         "kind" : "OBJECT",
         "name" : "ModelOrderConnection",
         "description" : null,
@@ -2509,7 +2524,7 @@
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
-            "name" : "ModelPaymentOptionsInput",
+            "name" : "ModelStringInput",
             "ofType" : null
           },
           "defaultValue" : null
@@ -2572,33 +2587,6 @@
           "type" : {
             "kind" : "INPUT_OBJECT",
             "name" : "ModelOrderFilterInput",
-            "ofType" : null
-          },
-          "defaultValue" : null
-        } ],
-        "interfaces" : null,
-        "enumValues" : null,
-        "possibleTypes" : null
-      }, {
-        "kind" : "INPUT_OBJECT",
-        "name" : "ModelPaymentOptionsInput",
-        "description" : null,
-        "fields" : null,
-        "inputFields" : [ {
-          "name" : "eq",
-          "description" : null,
-          "type" : {
-            "kind" : "ENUM",
-            "name" : "PaymentOptions",
-            "ofType" : null
-          },
-          "defaultValue" : null
-        }, {
-          "name" : "ne",
-          "description" : null,
-          "type" : {
-            "kind" : "ENUM",
-            "name" : "PaymentOptions",
             "ofType" : null
           },
           "defaultValue" : null
@@ -3432,6 +3420,15 @@
           },
           "defaultValue" : null
         }, {
+          "name" : "Images",
+          "description" : null,
+          "type" : {
+            "kind" : "SCALAR",
+            "name" : "String",
+            "ofType" : null
+          },
+          "defaultValue" : null
+        }, {
           "name" : "Price",
           "description" : null,
           "type" : {
@@ -3496,6 +3493,15 @@
           "defaultValue" : null
         }, {
           "name" : "Image",
+          "description" : null,
+          "type" : {
+            "kind" : "INPUT_OBJECT",
+            "name" : "ModelStringInput",
+            "ofType" : null
+          },
+          "defaultValue" : null
+        }, {
+          "name" : "Images",
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
@@ -3616,6 +3622,15 @@
           "defaultValue" : null
         }, {
           "name" : "Image",
+          "description" : null,
+          "type" : {
+            "kind" : "SCALAR",
+            "name" : "String",
+            "ofType" : null
+          },
+          "defaultValue" : null
+        }, {
+          "name" : "Images",
           "description" : null,
           "type" : {
             "kind" : "SCALAR",
@@ -3747,8 +3762,8 @@
           "name" : "PaymentOption",
           "description" : null,
           "type" : {
-            "kind" : "ENUM",
-            "name" : "PaymentOptions",
+            "kind" : "SCALAR",
+            "name" : "String",
             "ofType" : null
           },
           "defaultValue" : null
@@ -3837,7 +3852,7 @@
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
-            "name" : "ModelPaymentOptionsInput",
+            "name" : "ModelStringInput",
             "ofType" : null
           },
           "defaultValue" : null
@@ -3965,8 +3980,8 @@
           "name" : "PaymentOption",
           "description" : null,
           "type" : {
-            "kind" : "ENUM",
-            "name" : "PaymentOptions",
+            "kind" : "SCALAR",
+            "name" : "String",
             "ofType" : null
           },
           "defaultValue" : null
@@ -4248,6 +4263,35 @@
         } ],
         "interfaces" : null,
         "enumValues" : null,
+        "possibleTypes" : null
+      }, {
+        "kind" : "ENUM",
+        "name" : "PaymentOptions",
+        "description" : null,
+        "fields" : null,
+        "inputFields" : null,
+        "interfaces" : null,
+        "enumValues" : [ {
+          "name" : "Cash",
+          "description" : null,
+          "isDeprecated" : false,
+          "deprecationReason" : null
+        }, {
+          "name" : "On",
+          "description" : null,
+          "isDeprecated" : false,
+          "deprecationReason" : null
+        }, {
+          "name" : "Delivery",
+          "description" : null,
+          "isDeprecated" : false,
+          "deprecationReason" : null
+        }, {
+          "name" : "BANKTRANSFER",
+          "description" : null,
+          "isDeprecated" : false,
+          "deprecationReason" : null
+        } ],
         "possibleTypes" : null
       }, {
         "kind" : "INPUT_OBJECT",
@@ -5118,6 +5162,23 @@
         "onFragment" : false,
         "onField" : true
       }, {
+        "name" : "deprecated",
+        "description" : null,
+        "locations" : [ "FIELD_DEFINITION", "ENUM_VALUE" ],
+        "args" : [ {
+          "name" : "reason",
+          "description" : null,
+          "type" : {
+            "kind" : "SCALAR",
+            "name" : "String",
+            "ofType" : null
+          },
+          "defaultValue" : "\"No longer supported\""
+        } ],
+        "onOperation" : false,
+        "onFragment" : false,
+        "onField" : false
+      }, {
         "name" : "aws_auth",
         "description" : "Directs the schema to enforce authorization on a field",
         "locations" : [ "FIELD_DEFINITION" ],
@@ -5209,23 +5270,6 @@
         "description" : "Tells the service this field/object has access authorized by sigv4 signing.",
         "locations" : [ "OBJECT", "FIELD_DEFINITION" ],
         "args" : [ ],
-        "onOperation" : false,
-        "onFragment" : false,
-        "onField" : false
-      }, {
-        "name" : "deprecated",
-        "description" : null,
-        "locations" : [ "FIELD_DEFINITION", "ENUM_VALUE" ],
-        "args" : [ {
-          "name" : "reason",
-          "description" : null,
-          "type" : {
-            "kind" : "SCALAR",
-            "name" : "String",
-            "ofType" : null
-          },
-          "defaultValue" : "\"No longer supported\""
-        } ],
         "onOperation" : false,
         "onFragment" : false,
         "onField" : false

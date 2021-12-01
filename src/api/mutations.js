@@ -7,21 +7,24 @@ export const processOrder = /* GraphQL */ `
   }
 `;
 export const createProduct = /* GraphQL */ `
-mutation CreateProduct(
-  $input: CreateProductInput!
-  $condition: ModelProductConditionInput
-) {
-  createProduct(input: $input, condition: $condition) {
-    id
-    Title
-    Description
-    Image
-    Price
-    Quantity
-    createdAt
-    updatedAt
+  mutation CreateProduct(
+    $input: CreateProductInput!
+    $condition: ModelProductConditionInput
+  ) {
+    createProduct(input: $input, condition: $condition) {
+      id
+      Title
+      Description
+      Image
+      Images
+      Price
+      Quantity
+      Size
+      Condition
+      createdAt
+      updatedAt
+    }
   }
-}
 `;
 export const updateProduct = /* GraphQL */ `
   mutation UpdateProduct(

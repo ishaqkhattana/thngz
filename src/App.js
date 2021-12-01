@@ -8,6 +8,8 @@ import Checkout from "./container/checkout/Checkout";
 import Step2 from "./container/checkout/form/Step2";
 import Step3 from "./container/checkout/form/Step3";
 import Cart from "./container/cart/Cart";
+import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
+
 import "./App.css";
 import OrderConfirmation from "./container/checkout/OrderConfirmation";
 

@@ -38,6 +38,7 @@ type Product
   Title: String!
   Description: String
   Image: String
+  Images: String
   Price: Float
   Quantity: Int
   Size: Float
@@ -59,7 +60,7 @@ type Order
   Cart: String!
   Address: String!
   Name: String
-  PaymentOption : PaymentOptions
+  PaymentOption : String
   Phone: String!
   Email: String!
   Total: Float
@@ -83,7 +84,7 @@ enum OrderStatus {
   FAILED
 }
 enum PaymentOptions {
-  COD 
+  Cash On Delivery 
   BANKTRANSFER
 }
 type Mutation {

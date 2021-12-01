@@ -7,7 +7,6 @@ const getUserCart = studentId => {
   return async dispatch => {
     try {
       dispatch(userCartIsFetching());
-    //   const response = await cartService.getCart(studentId);
       dispatch(fetchUserCart());
     } catch (err) {
       const error = new Error("Problem fetching user cart");

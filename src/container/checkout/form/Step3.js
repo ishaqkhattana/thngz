@@ -24,9 +24,10 @@ const Step3 = () => {
       let subTotal = 0;
       if (cart != null) {
         cart.forEach((item) => {
-          subTotal += item.Price;
+          subTotal +=
+            Math.floor((item.Price - (20 / 100) * item.Price + 1) / 10) * 10;
         });
-        setTotal(subTotal);
+        setTotal(Math.floor(subTotal));
       }
     };
     console.log(cart);
@@ -34,26 +35,26 @@ const Step3 = () => {
   }, []);
 
   const handleCheckout = () => {
-    dispatch(checkoutNow({
-      Cart: JSON.stringify(cart),
-      Name: checkout.step1.name,
-      Address: checkout.step1.address,
-      Phone: checkout.step1.phone,
-      Email: checkout.step1.email,
-      Total: total,
-      PaymentOption: checkout.step2.paymentOption
-    }))
-    history.push("/orderConfirmation")
-  }
-  const navigation = [
-    { name: "Dashboard", href: "/", current: false },
-  ];
-  return (!checkout.step3IsFetching) ? (
+    dispatch(
+      checkoutNow({
+        Cart: JSON.stringify(cart),
+        Name: checkout.step1.name,
+        Address: checkout.step1.address,
+        Phone: checkout.step1.phone,
+        Email: checkout.step1.email,
+        Total: total,
+        PaymentOption: checkout.step2.paymentOption,
+      })
+    );
+    history.push("/orderConfirmation");
+  };
+  const navigation = [{ name: "Dashboard", href: "/", current: false }];
+  return !checkout.step3IsFetching ? (
     <>
       <ToastContainer />
 
-      <Nav navigation = {navigation}/>
-      <div className="mt-14 mx-2 lg:mx-14 bg-white py-4 border-white rounded-lg mb-8">
+      <Nav navigation={navigation} />
+      <div className="mt-4 lg:mt-14 mx-2 lg:mx-14 bg-white py-4 border-white rounded-lg mb-8">
         <div className="lg:grid lg:grid-cols-5 lg:gap-2 hidden lg:block">
           <div className="grid grid-cols-1  justify-items-center">
             {/* <div className="w-20 h-20 bg-black rounded-full align flex items-center justify-center text-white">
@@ -139,19 +140,22 @@ const Step3 = () => {
             <div className="border border-white rounded-lg bg-white">
               {cart.map((item) => {
                 return (
-                  <div className="m-5 p-4">
+                  <div className="lg:m-5 lg:p-4">
                     <div className="flex">
                       <img
                         src={item.Image}
                         style={{ maxWidth: "10rem" }}
-                        className="border-white rounded-lg"
+                        className="border-white rounded-lg p-2"
                       />
                       <div className="grid grid-cols-1 mr-auto ml-auto">
-                        <p className="text-2xl items-center mt-auto mb-auto">
+                        <p className="lg:text-2xl text-lg items-center mt-auto mb-auto">
                           {item.Title}
                         </p>
-                        <p className="text-2xl items-center mt-auto mb-auto text-blue-500">
-                          Rs {item.Price}
+                        <p className="lg:text-2xl text-lg items-center mt-auto mb-auto text-blue-500">
+                          Rs
+                          {Math.floor(
+                            (item.Price - (20 / 100) * item.Price + 1) / 10
+                          ) * 10}
                         </p>
                       </div>
                     </div>
@@ -159,7 +163,7 @@ const Step3 = () => {
                 );
               })}
               <button
-                className="mb-4 ml-8 mt-2 border rounded-lg p-2 bg-black text-white lg:w-1/4 transition duration-500 ease-in-out hover:bg-blue-500 transform hover:-translate-y-1 hover:scale-110"
+                className="mb-4 ml-2 lg:ml-8 mt-2 border rounded-lg p-2 bg-black text-white lg:w-1/4 transition duration-500 ease-in-out hover:bg-blue-500 transform hover:-translate-y-1 hover:scale-110"
                 onClick={() => {
                   history.push("/cart");
                 }}
@@ -211,10 +215,10 @@ const Step3 = () => {
               <p className="text-2xl mt-4 ml-auto">Rs {total} </p>
             </div>
             <div className="">
-            <button
+              <button
                 className="mt-2 mx-4 border rounded-lg p-2 bg-black text-white w-1/4 transition duration-500 ease-in-out hover:bg-blue-500 transform hover:-translate-y-1 hover:scale-110"
                 onClick={() => {
-                    history.push('/step2')
+                  history.push("/step2");
                 }}
               >
                 Previous

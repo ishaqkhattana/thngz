@@ -53,6 +53,7 @@ export const getProduct = /* GraphQL */ `
       Title
       Description
       Image
+      Images
       Price
       Quantity
       Size
@@ -74,6 +75,7 @@ export const listProducts = /* GraphQL */ `
         Title
         Description
         Image
+        Images
         Price
         Quantity
         Size
@@ -105,6 +107,7 @@ export const searchProducts = /* GraphQL */ `
         Title
         Description
         Image
+        Images
         Price
         Quantity
         Size

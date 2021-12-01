@@ -149,6 +149,7 @@ export const listProducts = /* GraphQL */ `
         Title
         Description
         Image
+        Images
         Price
         Quantity
         Size
@@ -179,7 +180,9 @@ export const searchProducts = /* GraphQL */ `
         id
         Title
         Description
+        Size
         Image
+        Images
         Price
         Quantity
         createdAt

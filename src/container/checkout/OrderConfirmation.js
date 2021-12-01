@@ -5,13 +5,13 @@ import { useDispatch, useSelector } from "react-redux";
 const OrderConfirmation = () => {
   const checkout = useSelector((state) => state.checkout);
   const navigation = [{ name: "Dashboard", href: "/", current: false }];
-  return (
+   return (checkout.step3 != null) ? (
     <>
       <Nav navigation = {navigation}/>
       <h2 className=" text-4xl grid justify-items-center mt-10">
         Order Confirmed
       </h2>
-      <div className="mt-14 mr-auto ml-auto bg-white py-4 border-white rounded-lg mb-8 w-1/2 p-4">
+      <div className="mt-14 mr-auto ml-auto bg-white py-4 border-white rounded-lg mb-8 lg:w-1/2 p-4">
         <p className="text-2xl mb-4">
           Your order # {checkout.step3.id} has been successfully placed
         </p>
@@ -20,7 +20,7 @@ const OrderConfirmation = () => {
         </a>
       </div>
     </>
-  );
+  ) : null;
 };
 
 export default OrderConfirmation;

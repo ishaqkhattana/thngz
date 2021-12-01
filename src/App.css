@@ -3,6 +3,9 @@
 @tailwind utilities;.App {
   text-align: center;
 }
+a {
+  color: black !important; 
+}
 
 body {
   font-family: 'Maven Pro', sans-serif;

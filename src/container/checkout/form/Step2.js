@@ -18,12 +18,13 @@ const Step2 = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(
-      addDataToStep2({
-        paymentOption,
-      })
-    );
-    history.push("/step3");
+    if (checkout.step2 != null) {
+      
+      history.push("/step3");
+    }
+    else {
+      alert("Please Click on a Delivery Option")
+    }
   };
 
   const handlePrevious = (e) => {
@@ -33,6 +34,11 @@ const Step2 = () => {
 
   const handlePaymentOptionChange = (e) => {
     e.preventDefault();
+    dispatch(
+      addDataToStep2({
+        paymentOption,
+      })
+    );
     var element = document.getElementById("COD");
     element.classList.add("bg-blue-500");
     element.classList.add("border-white");

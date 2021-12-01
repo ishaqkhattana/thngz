@@ -16,8 +16,8 @@ const Checkout = () => {
   return true ? (
     <>
       <Nav navigation = {navigation}/>
-      <h2 className=" text-4xl grid justify-items-center mt-10">Checkout</h2>
-      <div className="mt-14 mx-2 lg:mx-14 bg-white py-4 border-white rounded-lg mb-8">
+      <h2 className=" text-4xl grid justify-items-center mt-4 lg:mt-10">Checkout</h2>
+      <div className="mt-4 lg:mt-14 mx-2 lg:mx-14 bg-white py-4 border-white rounded-lg mb-8">
         <Step1 />
       </div>
     </>
